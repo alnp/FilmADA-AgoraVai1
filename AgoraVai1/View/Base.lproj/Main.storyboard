@@ -12,7 +12,7 @@
         <!--Featured-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Featured" id="BYZ-38-t0r" customClass="ViewController" customModule="AgoraVai1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Featured" id="BYZ-38-t0r" customClass="FeaturedViewController" customModule="AgoraVai1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1216"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
                                                             <inset key="sectionInset" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Uy3-AJ-b3I">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="popularCell" id="Uy3-AJ-b3I" customClass="PopularCollectionViewCell" customModule="AgoraVai1" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="0.0" width="200" height="140"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Vf3-94-qbn">
@@ -96,6 +96,10 @@
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
                                                                 <size key="customSize" width="200" height="140"/>
+                                                                <connections>
+                                                                    <outlet property="image" destination="voS-lp-sva" id="uB5-Wk-ola"/>
+                                                                    <outlet property="titleLabel" destination="Qgq-di-R5o" id="VJU-5B-4K5"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -147,7 +151,7 @@
                                                             <inset key="sectionInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zjc-9I-YGF">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zjc-9I-YGF" customClass="NowPlayingCollectionViewCell" customModule="AgoraVai1" customModuleProvider="target">
                                                                 <rect key="frame" x="16" y="0.0" width="251" height="114"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="b65-Mm-xqH">
@@ -193,6 +197,11 @@
                                                                         <constraint firstItem="h0R-IL-ZSQ" firstAttribute="centerY" secondItem="b65-Mm-xqH" secondAttribute="centerY" id="vZX-JH-JZl"/>
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="dateLabel" destination="IfC-2y-NVf" id="2Jw-E5-Ybx"/>
+                                                                    <outlet property="image" destination="h0R-IL-ZSQ" id="7Ev-IC-meb"/>
+                                                                    <outlet property="titleLabel" destination="Ojk-Sn-DDd" id="QQ3-eu-zPy"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -280,6 +289,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Featured" id="Qam-jV-lIg"/>
                     <size key="freeformSize" width="414" height="1216"/>
+                    <connections>
+                        <outlet property="nowPlayingCollectionView" destination="4p8-k5-k1O" id="7KU-FH-2J3"/>
+                        <outlet property="popularCollectionView" destination="ChS-hu-Gsy" id="Ayv-7w-4S6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
