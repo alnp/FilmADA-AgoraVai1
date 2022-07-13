@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension FeaturedViewController {
+extension FeaturedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == self.popularCollectionView {
@@ -19,23 +19,24 @@ extension FeaturedViewController {
         }
     }
     
-    fileprivate func makePopularCell(_ indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = popularCollectionView.dequeueReusableCell(withReuseIdentifier: "popularCell", for: indexPath) as? PopularCollectionViewCell
+    fileprivate func makePopularCell(_ indexPath: IndexPath) -> PopularCollectionViewCell {
+        let cell = popularCollectionView.dequeueReusableCell(withReuseIdentifier: PopularCollectionViewCell.cellIdentifier, for: indexPath) as? PopularCollectionViewCell
         
         cell?.titleLabel.text = popularMovies[indexPath.item].title
-        cell?.image.image = UIImage(named: popularMovies[indexPath.item].backdrop)
+        cell?.imageView.image = UIImage(named: popularMovies[indexPath.item].backdrop)
         
-        return cell ?? UICollectionViewCell()
+        return cell ?? PopularCollectionViewCell()
     }
     
-    fileprivate func makeNowPlayingCell(_ indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = nowPlayingCollectionView.dequeueReusableCell(withReuseIdentifier: "nowPlayingCell", for: indexPath) as? NowPlayingCollectionViewCell
+    fileprivate func makeNowPlayingCell(_ indexPath: IndexPath) -> NowPlayingCollectionViewCell {
+        let cell = nowPlayingCollectionView.dequeueReusableCell(withReuseIdentifier: NowPlayingCollectionViewCell.cellIdentifier, for: indexPath) as? NowPlayingCollectionViewCell
         
         cell?.titleLabel.text = nowPlayingMovies[indexPath.item].title
-        cell?.dateLabel.text = nowPlayingMovies[indexPath.item].releaseDate
-        cell?.image.image = UIImage(named: nowPlayingMovies[indexPath.item].poster)
+        let year: String = "\(nowPlayingMovies[indexPath.item].releaseDate.prefix(4))"
+        cell?.dateLabel.text = year
+        cell?.imageView.image = UIImage(named: nowPlayingMovies[indexPath.item].poster)
         
-        return cell ?? UICollectionViewCell()
+        return cell ?? NowPlayingCollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
