@@ -93,8 +93,8 @@
 			children = (
 				BE7E9AEE287456E5001DF65E /* AppDelegate.swift */,
 				BE7E9AF0287456E5001DF65E /* SceneDelegate.swift */,
-				BEC05DA5287C993600D409EF /* Controllers */,
 				BE1E689A287DEDF600F53235 /* Model */,
+				BEC05DA5287C993600D409EF /* Controllers */,
 				BEC05DA6287C99E100D409EF /* View */,
 				BEC05DA7287C9E1A00D409EF /* SupportingFiles */,
 			);
