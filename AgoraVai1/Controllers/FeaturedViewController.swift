@@ -9,7 +9,7 @@ import UIKit
 
 class FeaturedViewController: UIViewController {
 
-    let popularMovies = Movie.popularMovies()
+    var popularMovies: [Movie] = [] // = Movie.popularMovies()
     let nowPlayingMovies = Movie.nowPlayingMovies()
     
     @IBOutlet var popularCollectionView: UICollectionView!
@@ -24,6 +24,12 @@ class FeaturedViewController: UIViewController {
         
         popularCollectionView.delegate = self
         nowPlayingCollectionView.delegate = self
+        
+        Task {
+            self.popularMovies = await Movie.popularMoviesAPI()
+            self.popularCollectionView.reloadData()
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
