@@ -32,8 +32,15 @@ extension FeaturedViewController: UICollectionViewDataSource {
     fileprivate func makePopularCell(_ indexPath: IndexPath) -> PopularCollectionViewCell {
         let cell = popularCollectionView.dequeueReusableCell(withReuseIdentifier: PopularCollectionViewCell.cellIdentifier, for: indexPath) as? PopularCollectionViewCell
         
-        cell?.setup(title: popularMovies[indexPath.item].title, image: UIImage(named: popularMovies[indexPath.item].backdropPath) ?? UIImage())
-        
+        let movie = popularMovies[indexPath.item]
+        cell?.setup(title: movie.title, image: UIImage())
+
+        Task {
+            let imageData = await Movie.downloadImageData(withPath: movie.backdropPath)
+            let imagem: UIImage = UIImage(data: imageData) ?? UIImage()
+            cell?.setup(title: movie.title, image: imagem)
+        }
+
         return cell ?? PopularCollectionViewCell()
     }
     
